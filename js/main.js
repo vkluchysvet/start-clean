@@ -51,3 +51,39 @@ function open(evt) {
     })
 
 }
+
+
+// Get the button and form container elements
+const buyBtn = document.getElementById('buy-btn');
+const formContainer = document.getElementById('form-container');
+
+// Add an event listener to the button
+buyBtn.addEventListener('click', function() {
+  console.log('Button clicked!');
+  formContainer.classList.toggle('show');
+});
+
+
+
+const email = document.getElementById("email");
+const name = document.getElementById("name");
+const phone = document.getElementById("phone");
+document.getElementById("order-btn").onclick = function () {
+    let hasError = false;
+
+    [name, phone||email].forEach(item => {
+        if (!item.value) {
+            item.style.borderColor = "red";
+            hasError = true;
+        } else {
+            item.style.borderColor = "";
+        }
+    });
+
+    if (!hasError) {
+        [name, phone||email].forEach(item => {
+            item.value = "";
+        });
+        alert("Спасибо за заказ! Мы скоро свяжемся с вами!")
+    }
+}
